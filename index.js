@@ -10,14 +10,23 @@ console.log(ages[ages.length-1] - ages[0]);
 ages.push(30);
 console.log(ages);
 
-
 var sum = 0
 for (var i = 0; i < ages.length; i++) {
-sum = sum + ages[i]
+    var currentAge = ages[i]
+    sum = sum + currentAge;
+    console.log('we are at iteration: ', i);
+    console.log('age at index' + i + ' is:', currentAge);
+    console.log('sum', sum);
 }
 average = sum / ages.length
 
 console.log(average)
+
+let init = 0;
+function func(prev, current, i, arr) {
+    return prev + current;
+}
+ages.reduce(func, init);
 
 // 2.	Create an array called names that contains the following values: ‘Sam’, ‘Tommy’, ‘Tim’, ‘Sally’, ‘Buck’, ‘Bob’.
 // a.	Use a loop to iterate through the array and calculate the average number of letters per name. Print the result to the console.
@@ -86,7 +95,7 @@ name('Hermione', 'Granger');
 // 9.	Write a function that takes an array of numbers and returns true if the sum of all the numbers in the array is greater than 100.
 var isItGreater = [1, 5, 20, 150];
 let value = isItGreater.reduce(function(accumulator, currentValue){
-return accumulator, currentValue
+return accumulator + currentValue
 });
 if(value > 100){
     console.log(true);
@@ -104,17 +113,33 @@ console.log(sums);
 
 // 11.	Write a function that takes two arrays of numbers and returns true if the average of the elements in the first 
 // array is greater than the average of the elements in the second array.
-var arr1 = [1, 2, 3];
+var arr1 = [1, 2, 45];
 var arr2 = [4, 5, 6];
-let helpMe = arr1.reduce(function(accumulator, currentValue){
-    return accumulator + currentValue
-});
-
-if(arr1 > arr2) {
-    console.log(true);
-} else {
-    console.log(false);
+function averages(arr1, arr2){
+let sum = 0;
+let sum1 = 0;
+for(i = 0; i <arr1.length; i++){
+    sum = sum + arr1[i];
 }
+for(i = 0; i < arr2.length; i++){
+    sum1 = sum1 + arr2[i];
+}
+if(sum > sum1){
+    return true;
+} else {
+    return false;
+}
+}
+console.log(averages([1, 2, 45], [4, 5, 6]));
+// let helpMe = arr1.reduce(function(accumulator, currentValue){
+//     return accumulator + currentValue
+// });
+
+// if(arr1 > arr2) {
+//     console.log(true);
+// } else {
+//     console.log(false);
+// }
 
 
 // 12.	Write a function called willBuyDrink that takes a boolean isHotOutside, and a number moneyInPocket, and returns true 
